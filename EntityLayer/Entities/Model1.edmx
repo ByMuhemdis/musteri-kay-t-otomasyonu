@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="denemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_musteri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="tc" Type="nvarchar" MaxLength="11" />
+          <Property Name="cep_tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="ev_tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="is_tel" Type="nvarchar" MaxLength="15" />
+          <Property Name="ev_adress" Type="nvarchar" MaxLength="70" />
+          <Property Name="is_adress" Type="nvarchar" MaxLength="70" />
+          <Property Name="mail" Type="nvarchar" MaxLength="20" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="siradisiisim" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="denemeModelStoreContainer">
+          <EntitySet Name="tbl_musteri" EntityType="Self.tbl_musteri" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="denemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_musteri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tc" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="cep_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ev_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="is_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ev_adress" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="is_adress" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="mail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="siradisiisim" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="denemeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_musteri" EntityType="Self.tbl_musteri" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="denemeModelStoreContainer" CdmEntityContainer="denemeEntities">
+          <EntitySetMapping Name="tbl_musteri">
+            <EntityTypeMapping TypeName="denemeModel.tbl_musteri">
+              <MappingFragment StoreEntitySet="tbl_musteri">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="tc" ColumnName="tc" />
+                <ScalarProperty Name="cep_tel" ColumnName="cep_tel" />
+                <ScalarProperty Name="ev_tel" ColumnName="ev_tel" />
+                <ScalarProperty Name="is_tel" ColumnName="is_tel" />
+                <ScalarProperty Name="ev_adress" ColumnName="ev_adress" />
+                <ScalarProperty Name="is_adress" ColumnName="is_adress" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="siradisiisim" ColumnName="siradisiisim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

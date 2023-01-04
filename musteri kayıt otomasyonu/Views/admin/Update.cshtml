@@ -1,0 +1,89 @@
+﻿@model EntityLayer.Entities.tbl_musteri
+@{
+    ViewBag.Title = "Update";
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row" @*satr actık*@>
+        <div class="col-md-6">
+            @*sütün actık*@
+
+            <form method="post">
+
+                @*AdminCatagoryController de ki koşullarımızı aktşf attik yani boş controllerde yazdıgımzı boş gelimez komutunu aktif ettik *@
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "btn btn-danger" })
+                <div class="form-group">
+                    <label>ad</label>
+                    <input type="text" class="form-control" name="ad" value="@Model.ad" />
+                    @Html.ValidationMessageFor(x => x.ad, "", new { @style = "color:red" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>Soyad</label>
+                    <input type="text" class="form-control" name="soyad" value="@Model.soyad" />
+                    @Html.ValidationMessageFor(x => x.soyad, "", new { @style = "color:red" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>TC</label>
+                    <input type="number" class="form-control" name="tc" value="@Model.tc" />
+                    @Html.ValidationMessageFor(x => x.tc, "", new { @style = "color:red" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>mail</label>
+                    <input type="text" class="form-control" name="mail" value="@Model.mail" />
+                    @Html.ValidationMessageFor(x => x.mail, "", new { @style = "color:red" })
+                </div>
+                <br />
+
+                <div class="form-group">
+                    <label>Cep tel</label>
+                    <input type="number" class="form-control" name="cep_tel" value="@Model.cep_tel" />
+                    @Html.ValidationMessageFor(x => x.cep_tel, "", new { @style = "color:red" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>ev tel</label>
+                    <input type="number" class="form-control" name="ev_tel" value="@Model.ev_tel" />
+                    @Html.ValidationMessageFor(x => x.ev_tel, "", new { @style = "color:red" })
+                </div>
+                <br />
+
+                <div class="form-group">
+                    <label>İş tel</label>
+                    <input type="number" class="form-control" name="is_tel" value="@Model.is_tel" />
+                    @Html.ValidationMessageFor(x => x.is_tel, "", new { @style = "color:red" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>Ev adresi</label>
+                    <input type="text" class="form-control" name="ev_adress" value="@Model.ev_adress" />
+                    @Html.ValidationMessageFor(x => x.ev_adress, "", new { @style = "color:red" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>İş adresi</label>
+                    <input type="text" class="form-control" name="is_adress" value="@Model.is_adress" />
+                    @Html.ValidationMessageFor(x => x.is_adress, "", new { @style = "color:red" })
+                </div>
+                <br />
+              
+                <button class="btn btn-primary" type="submit">Güncelle</button>
+               
+
+            </form>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+

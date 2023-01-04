@@ -1,0 +1,127 @@
+﻿@using EntityLayer.Entities
+@model List<tbl_musteri>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Müşteri bilgileri</h2>
+<a href="/admin/Create" class="btn btn-danger">Müşteri ekle</a>
+
+<button type="button" class="btn btn-success">@Html.ActionLink("musteri git", "hepsi", new { @class = "btn btn-danger" })</button>
+      
+
+
+<br />
+<br />
+
+
+<table class="table table-bordered" id="table">
+
+    <tr>
+        <th>adı</th>
+        <th>Soyadı</th>
+        <th>tc</th>
+        <th>Email</th>
+        <th>Cep telefonu</th>
+        <th>Ev telefonu</th>
+        <th>İş telefonu</th>
+        <th>Ev adresi</th>
+        <th>is Adresi</th>
+        <th>müşreri durumu</th>
+        <th>Sıradışı isim</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        //burada ise müşterinin adında en az 3 tane sesli harf varsa sıradısı isim olarak true yaptık
+
+        char[] sesli1 = { 'a', 'A', 'e', 'E', 'ı', 'I', 'i', 'İ', 'o', 'O', 'ö', 'Ö', 'u', 'U', 'ü', 'Ü' };
+
+        int sayac = 0;
+        for (int i = 0; i < item.ad.Length; i++)
+        {
+            if (sesli1.Contains(item.ad[i]))
+            {
+
+                sayac++;
+
+
+            }
+
+        }
+        <tr>
+            <td>@item.ad</td>
+            <td>@item.soyad</td>
+            <td>@item.tc</td>
+            <td>@item.mail</td>
+            <td>@item.cep_tel</td>
+            <td>@item.ev_tel</td>
+            <td>@item.is_tel</td>
+            <td>@item.ev_adress</td>
+            <td>@item.is_adress</td>
+            <td>@item.durum</td>
+            <td>
+                @if (sayac >= 3)
+                {
+                    item.siradisiisim = true;
+                }
+                else
+                {
+                    item.siradisiisim = false;
+                }
+                @item.siradisiisim
+            </td>
+
+            <td>@Html.ActionLink("Sil", "Delete1", new { item.id }, new { @class = "btn btn-danger", onclick = "return confirm (' Silmek istediginizden eminmisiniz')" })</td>
+            <th><a class="btn btn-info" href="/admin/Update/@item.id">Güncelle</a></th>
+            @*ajax ile silme işlemi veri tabanından silmek ve ajax kullanmak amacıyla yapılmıstır *@
+            <td><a class="btnsil btn btn-danger " data-id="@item.id">Tamamen sil</a></td>
+
+
+
+        </tr>
+
+
+    }
+</table>
+
+
+
+<script src="~/Scripts/jquery-1.9.0.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+        $("#table").on("click", ".btnsil", function () {
+
+            var btn = $(this);
+            bootbox.confirm("Kalıcı olarak silmek istediginize eminmisiniz", function (result) {
+
+                if (result) {
+
+                    var id = btn.data("id");
+                    $.ajax({
+                        type: "GET",
+                        url: "/admin/Delete/" + id,
+                        success: function () {
+                            btn.parent().parent().remove();
+                        }
+
+                    });
+
+
+                }
+
+            })
+
+
+
+        });
+    });
+
+</script>
+
